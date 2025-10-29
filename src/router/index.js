@@ -1,29 +1,55 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
-Vue.use(VueRouter)
-
+import Layout from "../components/Layout.vue";
+import Start from "../components/Start.vue";
+import HrDashboard from "../components/Hr/HrDashboard.vue";
+import HrForm from "../components/Hr/HrForm.vue";
+// import EmployeeForm from "../components/Employee/EmployeeForm.vue";
+import EmployeeLayout from "../components/Employee/EmployeeLayout.vue";
+import Login from "../components/Login/Login.vue";
+import Vue from "vue";
+import VueRouter from "vue-router";
+Vue.use(VueRouter);
 const routes = [
+  { path: "/", name: "Start", component: Start },
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: "/Hr",
+    name: "HR",
+    component: Layout,
+    children: [
+      {
+        path: "Dashboard",
+        name: "HR Dashboard",
+        component: HrDashboard,
+      },
+      {
+        path: "Form",
+        name: "HR Form",
+        component: HrForm,
+      },
+    ],
+  },
+  {
+    path: "/Employee",
+    name: "Employee",
+    component: EmployeeLayout,
+    // children: [
+    //   {
+    //     path: "Form",
+    //     name: "Employee Form",
+    //     component: EmployeeForm,
+    //   },
+    // ],
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
