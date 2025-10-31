@@ -103,7 +103,7 @@
                 <template v-slot:prepend>
                   <v-icon color="primary">mdi-map-marker</v-icon>
                 </template>
-                <Map
+                <MyMap
                   :location="location"
                   :area="area ? Number(area) : null"
                   height="20vh"
@@ -138,17 +138,11 @@
 </template>
 
 <script>
-// import { computed, ref } from "vue";
-// import { useStore } from "vuex";
-// import { useRouter } from "vue-router";
-// import { useForm, useField } from "vee-validate";
-// import { required, min_value } from "@vee-validate/rules";
-import Map from "../ui/Map.vue";
-// import { getLocation } from "../utils/util";
+import MyMap from "../ui/Map.vue";
 
 export default {
   name: "HrForm",
-  components: { Map },
+  components: { MyMap },
   // setup() {
   //   const store = useStore();
   //   const router = useRouter();

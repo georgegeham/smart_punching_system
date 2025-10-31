@@ -64,7 +64,7 @@ const BusinessSlice = {
     },
   },
   actions: {
-    async setBusinessSettings({ state, commit }, settings) {
+    async setBusinessSettings({ commit }, settings) {
       if (settings.location) {
         const response = await axios.get(
           `${import.meta.env.VITE_WEATHER_API_URL}/current.json?key=${

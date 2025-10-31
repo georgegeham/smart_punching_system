@@ -64,7 +64,7 @@
 
 <script>
 export default {
-  name: "Weather",
+  name: "MyWeather",
   computed: {
     weather() {
       return this.$store.getters.Weather;

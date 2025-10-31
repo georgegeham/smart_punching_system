@@ -122,7 +122,7 @@
           @click:row="handleClick"
           hover
         >
-          <template #item.isWithinArea="{ item }">
+          <template v-slot:[`item.isWithinArea`]="{ item }">
             <v-chip
               :color="item.isWithinArea ? 'success' : 'error'"
               size="small"
@@ -132,10 +132,10 @@
               {{ item.isWithinArea ? "In Zone" : "Outside" }}
             </v-chip>
           </template>
-          <template #item.punchInTime="{ item }">
+          <template v-slot:[`item.punchInTime`]="{ item }">
             {{ (item.punchInTime && formatDate(item.punchInTime)) || "--" }}
           </template>
-          <template #item.punchOutTime="{ item }">
+          <template v-slot:[`item.punchOutTime`]="{ item }">
             {{ (item.punchOutTime && formatDate(item.punchOutTime)) || "--" }}
           </template>
         </v-data-table>

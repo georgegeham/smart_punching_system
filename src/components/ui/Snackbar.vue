@@ -13,7 +13,7 @@
 </template>
 <script>
 export default {
-  name: "Snackbar",
+  name: "MySnackbar",
   computed: {
     visible() {
       return this.$store.getters["snackbarVisible"];

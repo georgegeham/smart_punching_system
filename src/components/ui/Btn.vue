@@ -13,7 +13,7 @@
 </template>
 <script>
 export default {
-  name: "Btn",
+  name: "MyBtn",
   props: {
     text: {
       type: String,

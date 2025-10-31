@@ -18,7 +18,7 @@ import AppBar from "./AppBar.vue";
 import AppFooter from "./AppFooter.vue";
 
 export default {
-  name: "Layout",
+  name: "MyLayout",
   components: {
     AppBar,
     AppFooter,

@@ -2,7 +2,7 @@
   <v-container fluid class="d-flex flex-column fill-height pa-0 align-stretch">
     <v-row class="flex-grow-0">
       <v-col cols="12">
-        <Map
+        <MyMap
           :location="BusinessSettings?.location"
           :area="BusinessSettings?.area"
           height="30vh"
@@ -18,15 +18,15 @@
 
     <v-row class="flex-grow-0">
       <v-col cols="12" class="pa-0">
-        <Weather />
+        <MyWeather />
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
 import EmployeeRecords from "../Employee/EmployeeRecords.vue";
-import Map from "../ui/Map.vue";
-import Weather from "../weather/Weather.vue";
+import MyMap from "../ui/Map.vue";
+import MyWeather from "../weather/Weather.vue";
 
 export default {
   name: "HrDashboard",
@@ -42,8 +42,8 @@ export default {
     employee: null,
   }),
   components: {
-    Weather,
-    Map,
+    MyWeather,
+    MyMap,
     EmployeeRecords,
   },
   methods: {

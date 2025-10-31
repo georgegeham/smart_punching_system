@@ -15,7 +15,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { calculateRadius } from "../utils/util.js";
 export default {
-  name: "Map",
+  name: "MyMap",
   props: {
     location: String,
     area: Number,

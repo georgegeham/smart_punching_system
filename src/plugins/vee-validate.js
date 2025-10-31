@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
-// import * as rules from "vee-validate/dist/rules";
+import * as rules from "vee-validate/dist/rules";
 // import { messages } from "vee-validate/dist/locale/en.json";
 
 Vue.component("ValidationObserver", ValidationObserver);
@@ -12,7 +12,10 @@ extend("mobile", (value) => {
     value.length == 11
   );
 });
-
+extend("min", {
+  ...rules.min,
+  message: "The value must be at least {length} characters long",
+});
 extend("url", (value) => {
   var pattern = new RegExp(
     "^(https?:\\/\\/)?" + // protocol

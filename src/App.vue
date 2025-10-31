@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <!-- <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav> -->
-    <v-app dark>
+    <v-app>
       <router-view />
+      <Snackbar />
     </v-app>
   </div>
 </template>
+<script>
+import Snackbar from "./components/ui/Snackbar.vue";
+export default {
+  name: "App",
+  components: {
+    Snackbar,
+  },
+};
+</script>
 
 <style lang="scss">
 #app {

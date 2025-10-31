@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <v-container
     fluid
@@ -10,7 +9,7 @@
           <v-card-title class="text-center ma-0 pa-0">
             <v-responsive :aspect-ratio="16 / 9" height="300">
               <v-img
-                src="@/assets/start.webp"
+                :src="require('@/assets/start.webp')"
                 alt="Smart Punching System"
                 cover
               />
@@ -18,7 +17,7 @@
             <h2 class="mt-4 mx-auto">Smart Punching System</h2>
           </v-card-title>
           <v-card-text class="text-center">
-            <p class="mb-6">
+            <p class="my-6">
               A comprehensive location-based attendance management system for
               employees and HR.
             </p>
@@ -31,8 +30,12 @@
                 md="3"
               >
                 <v-card flat class="pa-4 fill-height">
-                  <v-card-title>
-                    <v-icon size="40" :color="feature.color" class="mb-3">
+                  <v-card-title class="d-flex flex-column align-center">
+                    <v-icon
+                      size="40"
+                      :color="feature.color"
+                      class="mb-3 d-block"
+                    >
                       {{ feature.icon }}
                     </v-icon>
                     <h4 class="mb-2">{{ feature.title }}</h4>
@@ -47,7 +50,7 @@
             </v-row>
           </v-card-text>
           <v-card-actions class="d-flex justify-center">
-            <Btn text="Login" href="/login" -tooltip-text="Login" />
+            <MyBtn text="Login" href="/login" :data-tooltip-text="Login" />
           </v-card-actions>
         </v-card>
       </v-col>
@@ -55,11 +58,11 @@
   </v-container>
 </template>
 <script>
-import Btn from "./ui/Btn.vue";
+import MyBtn from "./ui/Btn.vue";
 export default {
-  name: "start",
+  name: "MyStart",
   components: {
-    Btn,
+    MyBtn,
   },
   data() {
     return {

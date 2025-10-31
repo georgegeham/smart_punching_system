@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <v-container fluid class="fill-height">
     <v-row class="fill-height">
       <v-col cols="6">
@@ -97,7 +97,7 @@
                 <v-icon color="warning">mdi-map-marker</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <Map :location="location" height="20vh" />
+                <MyMap :location="location" height="20vh" />
               </v-list-item-content>
             </v-list-item>
 
@@ -131,25 +131,25 @@
   </v-container>
 </template>
 
-<!-- <script setup>
-// import { ref, computed } from "vue";
-// import { useForm, useField } from "vee-validate";
-// import { required, min } from "@vee-validate/rules";
-// import { defineRule } from "vee-validate";
-import Map from "../ui/Map.vue";
+<script setup>
+import { ref } from "vue";
+import { useForm, useField } from "vee-validate";
+import { required, min } from "@vee-validate/rules";
+import { defineRule } from "vee-validate";
+import MyMap from "../ui/Map.vue";
 import { getLocation } from "../utils/util";
-// import { useStore } from "vuex";
+import { useStore } from "vuex";
 
-// defineRule("required", required);
-// defineRule("min", min);
+defineRule("required", required);
+defineRule("min", min);
 
-// const store = useStore();
-// const loading = ref(false);
-// const latitude = ref(null);
-// const longitude = ref(null);
-// const distance = ref(null);
-// const actionType = ref("punchIn");
-// const currentTime = ref("");
+const store = useStore();
+const loading = ref(false);
+const latitude = ref(null);
+const longitude = ref(null);
+const distance = ref(null);
+const actionType = ref("punchIn");
+const currentTime = ref("");
 
 const { handleSubmit, resetForm } = useForm();
 
@@ -223,6 +223,6 @@ const onSubmit = handleSubmit(async (values) => {
     loading.value = false;
   }
 });
-</script> -->
+</script>
 
-<!-- <style scoped></style> -->
+<style scoped></style>
