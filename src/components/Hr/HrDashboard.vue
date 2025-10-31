@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid class="d-flex flex-column fill-height pa-0 align-stretch">
-    <v-row class="flex-grow-0">
+  <v-container fluid>
+    <v-row no-gutters class="first">
       <v-col cols="12">
         <MyMap
           :location="BusinessSettings?.location"
@@ -10,13 +10,13 @@
         />
       </v-col>
     </v-row>
-    <v-row no-gutters class="flex-grow-1">
+    <v-row no-gutters class="hcal">
       <v-col cols="12">
         <EmployeeRecords @pinlocation="handlePinLocation" />
       </v-col>
     </v-row>
 
-    <v-row class="flex-grow-0">
+    <v-row no-gutters>
       <v-col cols="12" class="pa-0">
         <MyWeather />
       </v-col>
@@ -61,4 +61,11 @@ export default {
   // },
 };
 </script>
-<style></style>
+<style scoped>
+.first {
+  transform: translateY(-20px);
+}
+.hcal {
+  height: calc(57vh);
+}
+</style>

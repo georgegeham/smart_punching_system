@@ -2,6 +2,7 @@ import MyLayout from "../components/Layout.vue";
 import MyStart from "../components/Start.vue";
 import HrDashboard from "../components/Hr/HrDashboard.vue";
 import HrForm from "../components/Hr/HrForm.vue";
+import RegisterPage from "../components/Register/Register.vue";
 // import EmployeeForm from "../components/Employee/EmployeeForm.vue";
 import EmployeeLayout from "../components/Employee/EmployeeLayout.vue";
 import MyLogin from "../components/Login/Login.vue";
@@ -14,6 +15,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: MyLogin,
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: RegisterPage,
   },
   {
     path: "/Hr",

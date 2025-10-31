@@ -1,10 +1,5 @@
 <template>
-  <v-snackbar
-    v-model="visible"
-    :color="color"
-    :timeout="3000"
-    @update:model-value="onClose"
-  >
+  <v-snackbar v-model="visible" :color="color" timeout="3000">
     {{ text }}
     <template v-slot:action="{ attrs }">
       <v-btn text v-bind="attrs" @click="onClose(false)">Close</v-btn>
@@ -15,8 +10,13 @@
 export default {
   name: "MySnackbar",
   computed: {
-    visible() {
-      return this.$store.getters["snackbarVisible"];
+    visible: {
+      get() {
+        return this.$store.getters["snackbarVisible"];
+      },
+      set(value) {
+        if (!value) this.$store.commit("hideSnackbar");
+      },
     },
     text() {
       return this.$store.getters["snackbarText"];

@@ -2,16 +2,16 @@
   <div id="app">
     <v-app>
       <router-view />
-      <Snackbar />
+      <MySnackbar />
     </v-app>
   </div>
 </template>
 <script>
-import Snackbar from "./components/ui/Snackbar.vue";
+import MySnackbar from "./components/ui/Snackbar.vue";
 export default {
   name: "App",
   components: {
-    Snackbar,
+    MySnackbar,
   },
 };
 </script>

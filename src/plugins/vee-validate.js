@@ -12,6 +12,16 @@ extend("mobile", (value) => {
     value.length == 11
   );
 });
+
+extend("email", {
+  ...rules.email,
+  message: "The value must be a valid email address",
+});
+
+extend("required", {
+  ...rules.required,
+  message: "The value is required",
+});
 extend("min", {
   ...rules.min,
   message: "The value must be at least {length} characters long",

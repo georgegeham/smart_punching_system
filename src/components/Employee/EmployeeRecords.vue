@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="fill-height pa-0">
     <v-row>
       <v-col cols="12">
         <h2 class="text-h4 mb-4">Employee Records</h2>
@@ -17,103 +17,6 @@
 
     <v-row v-else>
       <v-container fluid>
-        <!-- <v-col
-        v-for="(employee, index) in employees"
-        :key="index"
-        cols="12"
-        sm="6"
-        md="4"
-        lg="3"
-      >
-        <v-card
-          elevation="2"
-          class="employee-card"
-          @click="this.$emit('pinlocation', employee)"
-        >
-          <v-card-title class="d-flex justify-space-between align-center">
-            <span class="text-truncate">{{ employee.name }}</span>
-            <v-chip
-              :color="employee.isWithinArea ? 'success' : 'warning'"
-              small
-              label
-            >
-              {{ employee.isWithinArea ? "In Zone" : "Outside" }}
-            </v-chip>
-          </v-card-title>
-
-          <v-divider></v-divider>
-
-          <v-card-text>
-            <v-list dense>
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon color="primary" small>mdi-badge-account</v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-subtitle>Employee ID</v-list-item-subtitle>
-                  <v-list-item-title>{{
-                    employee.employeeId
-                  }}</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon :color="employee.punchInTime ? 'green' : 'red'" small>
-                    {{ employee.punchInTime ? "mdi-login" : "mdi-logout" }}
-                  </v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-subtitle>Action</v-list-item-subtitle>
-                  <v-list-item-title>
-                    {{ employee.punchInTime ? "Punch In" : "Punch Out" }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon color="info" small>mdi-clock-outline</v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-subtitle>Time</v-list-item-subtitle>
-                  <v-list-item-title>
-                    {{ employee.punchInTime || employee.punchOutTime }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon color="orange" small>mdi-map-marker-distance</v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-subtitle>Distance</v-list-item-subtitle>
-                  <v-list-item-title>
-                    {{
-                      employee.distance
-                        ? employee.distance.toFixed(2) + " m"
-                        : "N/A"
-                    }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list-item v-if="employee.timestamp">
-                <v-list-item-icon>
-                  <v-icon color="grey" small>mdi-calendar-clock</v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-subtitle>Date</v-list-item-subtitle>
-                  <v-list-item-title>
-                    {{ formatDate(employee.timestamp) }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-card-text>
-        </v-card>
-      </v-col> -->
         <v-data-table
           :items="employees"
           :headers="headers"

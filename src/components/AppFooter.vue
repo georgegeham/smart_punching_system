@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation v-model="value" color="primary" active>
+  <v-bottom-navigation v-model="value" color="primary">
     <v-btn value="Hr" @click="$router.push({ name: 'HR Dashboard' })">
       <v-icon>mdi-view-dashboard</v-icon>
       <span>HR</span>
@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     currentRoute() {
-      return this.$router.currentRoute.value.name;
+      return this.$router.currentRoute.name;
     },
   },
   watch: {

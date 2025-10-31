@@ -1,13 +1,13 @@
 <template>
   <v-app-bar :elevation="2" app>
-    <v-app-bar-title>{{ title }}</v-app-bar-title>
-    <v-app-bar-actions-item>
-      <v-btn icon @click="logout">
-        <v-icon>mdi-logout</v-icon>
-      </v-btn>
-    </v-app-bar-actions-item>
+    <v-app-bar-title class="title">{{ title }}</v-app-bar-title>
+    <v-spacer></v-spacer>
+    <v-btn icon @click="logout">
+      <v-icon>mdi-logout</v-icon>
+    </v-btn>
   </v-app-bar>
 </template>
+
 <script>
 export default {
   name: "AppBar",
@@ -27,4 +27,10 @@ export default {
   },
 };
 </script>
-<style></style>
+
+<style scoped>
+.title {
+  display: inline-block;
+  text-wrap: nowrap;
+}
+</style>

@@ -7,7 +7,7 @@
           <v-row no-gutters>
             <v-col cols="12" md="6">
               <v-btn
-                color="primary"
+                :color="userType === 'HR' ? '' : 'primary'"
                 :class="[{ activeBtn: userType === 'HR' }, 'ma-2 w-66']"
                 @click="changeType('HR')"
               >
@@ -17,7 +17,7 @@
             </v-col>
             <v-col cols="12" md="6">
               <v-btn
-                color="primary"
+                :color="userType === 'Employee' ? '' : 'primary'"
                 :class="[
                   'ma-2 w-66 w-md-75',
                   { activeBtn: userType === 'Employee' },
@@ -33,14 +33,14 @@
               <ValidationObserver v-slot="{ handleSubmit }">
                 <v-form @submit.prevent="handleSubmit(onSubmit)">
                   <ValidationProvider
-                    name="Username"
-                    rules="required|min:3"
+                    name="email"
+                    rules="required|email"
                     v-slot="{ errors }"
                   >
                     <v-text-field
-                      v-model="form.username"
-                      label="Username"
-                      placeholder="Enter your Username"
+                      v-model="form.email"
+                      label="email"
+                      placeholder="Enter your email"
                       :error-messages="errors"
                       class="mb-4"
                     ></v-text-field>
@@ -60,7 +60,11 @@
                       class="mb-4"
                     ></v-text-field>
                   </ValidationProvider>
-
+                  <router-link
+                    :to="{ name: 'Register' }"
+                    class="d-block text-right mb-3"
+                    >Don't have an account?</router-link
+                  >
                   <v-btn
                     color="primary"
                     class="mt-2"
@@ -80,22 +84,14 @@
 </template>
 
 <script>
-import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
-import { required, min } from "vee-validate/dist/rules";
-
-extend("required", required);
-extend("min", min);
+import HR from "@/store/slices/Classes/HR";
 
 export default {
   name: "MyLogin",
-  components: {
-    ValidationObserver,
-    ValidationProvider,
-  },
   data() {
     return {
       form: {
-        username: "",
+        email: "",
         password: "",
       },
       userType: "HR",
@@ -106,40 +102,26 @@ export default {
     changeType(type) {
       this.userType = type;
     },
-    FakeApi({ username, password }) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (username === "admin" && password === "123456") {
-            resolve({
-              success: true,
-              message: "Login successful",
-              status: 200,
-            });
-          } else {
-            reject({
-              success: false,
-              message: "Invalid username or password",
-              status: 401,
-            });
-          }
-        }, 1000);
-      });
-    },
     async onSubmit() {
       this.loading = true;
       try {
-        const response = await this.FakeApi(this.form);
-
+        const hr = new HR();
+        const response = await hr.login(this.form);
         this.$store.commit("showSnackbar", {
           text: response.message,
           color: "success",
         });
+        const userData = {
+          ...response.user,
+          token: response.token,
+        };
+        this.$store.dispatch("setUser", userData);
 
         if (this.userType === "HR") this.$router.push({ name: "HR Dashboard" });
         else this.$router.push({ name: "Employee Form" });
       } catch (error) {
         this.$store.commit("showSnackbar", {
-          text: error.message,
+          text: error.response.data.message,
           color: "error",
         });
       } finally {

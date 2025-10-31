@@ -1,7 +1,7 @@
 <template>
   <v-app class="d-flex flex-column fill-height">
     <!-- Top Bar -->
-    <AppBar :title="$router.currentRoute.value.name" />
+    <AppBar :title="$router.currentRoute.name" />
 
     <!-- Main Content -->
     <v-main class="flex-grow-1">
